@@ -10,7 +10,7 @@ const SocketServer = require("./socketServer");
 const compression = require("compression")
 
 const corsOptions = {
-  origin: 'https://a9fa-1-46-131-224.ap.ngrok.io',
+  origin: 'http://localhost:3000',
   credentials: true
 };
 const app = express()
@@ -46,7 +46,7 @@ peerServer.on('connection', (client) => {
 
   const io = new Server(server, {
     cors: {
-      origin: "https://a9fa-1-46-131-224.ap.ngrok.io",
+      origin: "http://localhost:3000",
       credentials: true,
     },
   });
