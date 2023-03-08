@@ -50,7 +50,7 @@ const SocketServer = (socket) => {
     users = EditData(users, data.sender, data.recipient);
     const client = users.find((user) => user.id === data.recipient);
     if (client) {
-      if (data.call) {
+      if (client.call) {
         users = EditData(users, data.sender, null);
         socket.emit('userBusy', data);
       } else {
