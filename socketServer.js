@@ -35,12 +35,16 @@ const SocketServer = (socket) => {
   socket.on('disconnect', () => {
     const data = users.find((user) => user.socketId === socket.id);
     if (data) {
-      socket.to(`${data.socketId}`).emit('CheckUserOffline', data.id);
-      // if (users.length > 0) {
-      //   users.forEach((client) => {
-      //     socket.to(`${client.socketId}`).emit('CheckUserOffline', data.id);
-      //   });
-      // }
+      // socket.to(`${data.socketId}`).emit('CheckUserOffline', data.id);
+      if (users.length > 0) {
+        users.forEach((client) => {
+          if(data.call) {
+            data.call === client.id && socket.to(`${client.socketId}`).emit('endCallToClient', data);
+            data.id === client.id && socket.to(`${client.socketId}`).emit('endCallToClient', data);
+          }
+          socket.to(`${client.socketId}`).emit('CheckUserOffline', data.id);
+        });
+      }
     }
     users = users.filter((user) => user.socketId !== socket.id);
   });
