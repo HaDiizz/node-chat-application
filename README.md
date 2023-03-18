@@ -6,6 +6,10 @@ Preview Demo
 --------
 [Chatify](https://sc-chatify.netlify.app) 
 
+*Admin Account*
+- Username: admin
+- Password: admin123
+
 Link
 -------
 
